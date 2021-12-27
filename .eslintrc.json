@@ -1,3 +1,18 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next",
+	"plugins": [
+    "react-hooks"
+  ],
+  "rules": {
+    "no-console": "off",
+    "react/prop-types": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        "additionalHooks": "(useRecoilCallback|useRecoilTransaction_UNSTABLE)"
+      }
+    ],
+		"semi": 1
+  }
 }
