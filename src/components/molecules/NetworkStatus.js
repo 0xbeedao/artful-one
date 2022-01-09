@@ -1,8 +1,9 @@
-import { Select, useToast } from '@chakra-ui/react';
+import { Box, Select, useColorModeValue, useToast } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 import { chains } from '../../config';
+import theme from '../../config/theme';
 
 async function requestNetwork(chainId) {
 	await window.ethereum.request({
@@ -71,7 +72,6 @@ export const NetworkStatus = (props) => {
 			provider.getNetwork().then((net) => {
 				setNetwork(net);
 				if (!toast.isActive(net.chainId)) {
-					console.log('toast!');
 					toast({
 						id: net.chainId,
 						title: `Connected to ${net.name}`,
@@ -91,11 +91,20 @@ export const NetworkStatus = (props) => {
 	};
 
 	const options = Object.values(chains).map((c) => <ChainOption chain={c} key={c.chainId} />);
+	console.log(theme);
+	const { primary } = theme.colors;
 
 	return (
-		<Select placeholder="Select Net" colorScheme="green" value={chainId} w="9em" onChange={handleChange}>
-			{options}
-		</Select>
+		<Box pr="1rem">
+			<Select placeholder="Select Net" value={chainId} w="auto" onChange={handleChange}
+				bgColor={useColorModeValue(primary['900'], primary['100'])}
+				color={useColorModeValue(primary['200'], primary['800'])}
+				borderColor={useColorModeValue(primary['200'], primary['800'])}
+				borderWidth="2px"
+			>
+				{options}
+			</Select>
+		</Box>
 	);
 };
 

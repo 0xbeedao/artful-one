@@ -2,7 +2,7 @@ import { extendTheme } from "@chakra-ui/react";
 
 const config = {
 	colors: {
-		primary: {
+		secondary: {
 			50: '#eef0fd',
 			100: '#d0d3e4',
 			200: '#b2b8cc',
@@ -13,10 +13,58 @@ const config = {
 			700: '#37334d',
 			800: '#201d30',
 			900: '#0b0716',
+		},
+		primary: {
+			100: '#F3E5F5',
+			200: '#EAD26E',
+			300: '#E1BEE7',
+			400: '#D8295F',
+			500: '#CE93D8',
+			600: '#A86732',
+			700: '#823A8C',
+			800: '#5A9DE3',
+			900: '#33013A',
 		}
 	},
-	initialColorMode: "dark",
+	initialColorMode: "light",
 	useSystemColorMode: false,
+	components: {
+		Button: {
+			baseStyle: {
+				fontWeight: 'bold',
+				borderRadius: '.2em',
+				backgroundColor: 'blue',
+				borderWidth: '0',
+			},
+			sizes: {
+				sm: {
+					fontSize: 'sm',
+					px: 3,
+					py: 2,
+				},
+				md: {
+					fontSize: 'md',
+					px: 5,
+					py: 3,
+				},
+			},
+			variants: {
+				primary: {
+					color: 'white',
+					border: '2px solid #755df2',
+				},
+			},
+			defaultProps: {
+				size: 'md',
+				variant: 'primary',
+			},
+		},
+	},
+	fonts: {
+		heading: 'Esteban',
+		body: 'Esteban',
+		code: 'Source Code Pro',
+	},
 	styles: {
 		global: (props) => ({
 			"*": {
@@ -34,7 +82,8 @@ const config = {
 				left: 1,
 			},
 			".header": {
-				bgColor: props.colorMode === 'light' ? "primary.200" : "primary.700",
+				bgColor: props.colorMode === 'dark' ? "primary.100" : "primary.900",
+				color: props.colorMode === 'dark' ? "primary.800" : "primary.200",
 				justify: true,
 				padding: ".5em 1em .5em 90px",
 				borderBottom: "2px solid primary.900",
@@ -42,7 +91,16 @@ const config = {
 					fontWeight: 'normal',
 				},
 				"h2": {
-					fontWeight: 'normal',
+					fontWeight: '600',
+					_hover: {
+						color: props.colorMode === 'dark' ? "secondary.500" : "primary.500",
+					}
+				},
+				".headerLink": {
+					cursor: "pointer",
+					_hover: {
+						color: props.colorMode === 'dark' ? "secondary.500" : "primary.500",
+					},
 				},
 			},
 			".mat img": {
@@ -88,7 +146,7 @@ const config = {
 					lineHeight: "1.2em",
 					fontSize: "18px",
 				},
-			}
+			},
 		}),
 	}
 };

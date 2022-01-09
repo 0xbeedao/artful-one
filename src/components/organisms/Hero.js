@@ -27,7 +27,7 @@ export default function Hero(props) {
 		price,
 		...rest
 	} = props;
-	const textColor = useColorModeValue('primary.800', 'primary.200');
+	const textColor = useColorModeValue('primary.700', 'primary.300');
 
 	return (
 		<Flex

@@ -2,17 +2,18 @@ import { HStack, Heading, Icon, Spacer, useColorModeValue } from '@chakra-ui/rea
 import { Box } from "@chakra-ui/react";
 import Image from 'next/image';
 import Link from 'next/link';
-import { GiCardAceHearts } from 'react-icons/gi';
+import { GiAbstract074, GiCardAceHearts } from 'react-icons/gi';
+import { GrGallery } from 'react-icons/gr';
 
 import { NetworkStatus } from '../molecules/NetworkStatus';
 import { WalletButton } from '../molecules/WalletButton';
 
 export function HeaderLink({ href, children, icon }) {
 	return (
-		<Box pr="1em">
+		<Box pr="1em" className="headerLink">
 			<Link href={href} passHref={true}>
 				<Box>
-					<Icon as={icon} mr="0.5em" />
+					<Icon as={icon} h="1.5rem" mr="0.5em" verticalAlign="bottom" />
 					{children}
 				</Box>
 			</Link>
@@ -38,6 +39,7 @@ export default function Header(props) {
 			</Box>
 			<HStack
 				className="header"
+				spacing='1rem'
 			>
 				<Link href="/" passHref={true}>
 					<HStack h='1.5rem' gap="0.5rem">
@@ -47,8 +49,8 @@ export default function Header(props) {
 					</HStack>
 				</Link>
 				<Spacer />
-				<HeaderLink href="/gallery">Gallery</HeaderLink>
-				<HeaderLink href="/gallery" icon={GiCardAceHearts}>Tarot Dealer</HeaderLink>
+				<HeaderLink href="/gallery" icon={GiAbstract074}>Gallery</HeaderLink>
+				<HeaderLink href="/tarot" icon={GiCardAceHearts}>Tarot Dealer</HeaderLink>
 				<NetworkStatus provider={provider} />
 				<WalletButton
 					provider={provider}
@@ -56,5 +58,5 @@ export default function Header(props) {
 					logoutOfWeb3Modal={logoutOfWeb3Modal}
 				/>
 			</HStack>
-		</Box>);
+		</Box >);
 }

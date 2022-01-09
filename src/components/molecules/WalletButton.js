@@ -1,4 +1,4 @@
-import { Button, Icon, Tooltip } from '@chakra-ui/react';
+import { Button, Icon, Tooltip, useColorModeValue } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { BiWallet } from 'react-icons/bi';
 
@@ -37,7 +37,10 @@ export function WalletButton(props) {
 
 	return (
 		<Tooltip label={walletInfo} placement="left">
-			<Button onClick={maybeLoadWeb3Modal}>
+			<Button
+				bgColor={useColorModeValue('secondary.500', 'secondary.200')}
+				color={useColorModeValue('secondary.200', 'secondary.800')}
+				onClick={maybeLoadWeb3Modal}>
 				<Icon as={BiWallet} mr='.5em' />
 				{buttonText}
 			</Button>
