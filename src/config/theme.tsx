@@ -2,7 +2,7 @@ import { extendTheme } from "@chakra-ui/react";
 
 const config = {
 	colors: {
-		secondary: {
+		primary: {
 			50: '#eef0fd',
 			100: '#d0d3e4',
 			200: '#b2b8cc',
@@ -14,7 +14,7 @@ const config = {
 			800: '#201d30',
 			900: '#0b0716',
 		},
-		primary: {
+		secondary: {
 			100: '#F3E5F5',
 			200: '#EAD26E',
 			300: '#E1BEE7',
@@ -33,7 +33,7 @@ const config = {
 			baseStyle: {
 				fontWeight: 'bold',
 				borderRadius: '.2em',
-				backgroundColor: 'blue',
+				backgroundColor: 'primary.500',
 				borderWidth: '0',
 			},
 			sizes: {

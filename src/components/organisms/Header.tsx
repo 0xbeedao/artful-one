@@ -3,12 +3,16 @@ import { Box } from "@chakra-ui/react";
 import Image from 'next/image';
 import Link from 'next/link';
 import { GiAbstract074, GiCardAceHearts } from 'react-icons/gi';
-import { GrGallery } from 'react-icons/gr';
 
-import { NetworkStatus } from '../molecules/NetworkStatus';
-import { WalletButton } from '../molecules/WalletButton';
+import WalletButton from '../atoms/WalletButton';
 
-export function HeaderLink({ href, children, icon }) {
+interface HeaderLinkProps {
+	href: string;
+	icon: any;
+	children: React.ReactNode;
+};
+
+export function HeaderLink({ href, children, icon }: HeaderLinkProps): JSX.Element {
 	return (
 		<Box pr="1em" className="headerLink">
 			<Link href={href} passHref={true}>
@@ -21,10 +25,8 @@ export function HeaderLink({ href, children, icon }) {
 	);
 }
 
-export default function Header(props) {
-	const { provider, loadWeb3Modal, logoutOfWeb3Modal } = props;
+export default function Header(): JSX.Element {
 	const logo = useColorModeValue('/images/bee-logo-circle.png', '/images/bee-logo-circle-dark.png');
-	console.log(`logo: ${logo}`);
 
 	return (
 		<Box>
@@ -51,12 +53,7 @@ export default function Header(props) {
 				<Spacer />
 				<HeaderLink href="/gallery" icon={GiAbstract074}>Gallery</HeaderLink>
 				<HeaderLink href="/tarot" icon={GiCardAceHearts}>Tarot Dealer</HeaderLink>
-				<NetworkStatus provider={provider} />
-				<WalletButton
-					provider={provider}
-					loadWeb3Modal={loadWeb3Modal}
-					logoutOfWeb3Modal={logoutOfWeb3Modal}
-				/>
+				<WalletButton />
 			</HStack>
 		</Box >);
 }

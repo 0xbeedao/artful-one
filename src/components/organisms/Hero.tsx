@@ -8,12 +8,24 @@ import {
 	useColorModeValue,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import PropTypes from "prop-types";
 import React from "react";
 
 import { FramedArt } from "../molecules/FramedArt";
 
-export default function Hero(props) {
+interface HeroProps {
+	artTitle: string;
+	title: string;
+	subtitle: string;
+	image: string;
+	ctaLink: string;
+	ctaText: string;
+	alt: string;
+	artist: string;
+	media: string;
+	price?: string;
+}
+
+export default function Hero(props: HeroProps) {
 	const {
 		artTitle,
 		title,
@@ -24,8 +36,7 @@ export default function Hero(props) {
 		alt,
 		artist,
 		media,
-		price,
-		...rest
+		price = 'NFS',
 	} = props;
 	const textColor = useColorModeValue('primary.700', 'primary.300');
 
@@ -34,11 +45,10 @@ export default function Hero(props) {
 			align="center"
 			justify={{ base: "center", md: "space-around", xl: "space-between" }}
 			direction={{ base: "column-reverse", md: "row" }}
-			wrap="no-wrap"
+			wrap="nowrap"
 			minH="70vh"
 			px={8}
 			mb={16}
-			{...rest}
 		>
 			<Stack
 				spacing={4}
@@ -100,26 +110,3 @@ export default function Hero(props) {
 	);
 }
 
-Hero.propTypes = {
-	artTitle: PropTypes.string.isRequired,
-	title: PropTypes.string,
-	subtitle: PropTypes.string,
-	image: PropTypes.string,
-	ctaText: PropTypes.string,
-	ctaLink: PropTypes.string,
-
-	alt: PropTypes.string,
-	artist: PropTypes.string,
-	media: PropTypes.string,
-	price: PropTypes.any
-};
-
-Hero.defaultProps = {
-	title: "Artful One",
-	subtitle:
-		"Home of my NFT experiments",
-	image: "",
-	ctaText: "Explore Artful NFTs now",
-	ctaLink: "/",
-	price: 'NFS',
-};

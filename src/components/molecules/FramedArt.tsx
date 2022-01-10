@@ -1,4 +1,5 @@
 import { Box, Image, Text, useColorModeValue } from '@chakra-ui/react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 export const FramedArt = (props) => {
@@ -14,7 +15,7 @@ export const FramedArt = (props) => {
 				<Text color={textColor} className="title">{title}</Text>
 				{artist && <Text className="artist">{artist}</Text>}
 				{media && <Text className="media">{media}</Text>}
-				<Box color={textColor} className={{ price: true, nfs: !price }}>
+				<Box color={textColor} className={classnames({ price: true, nfs: !price })}>
 					{price ? price : "NFS"}
 				</Box>
 			</Box>

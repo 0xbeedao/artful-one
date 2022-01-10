@@ -1,6 +1,4 @@
 import { Center, VStack } from '@chakra-ui/react';
-import Head from 'next/head';
-import Image from 'next/image';
 import React from 'react';
 
 import Hero from '../components/organisms/Hero';
@@ -11,7 +9,6 @@ import PrimaryTemplate from '../components/templates/Primary';
 export default function Home() {
 	return (
 		<PrimaryTemplate pageKey="home" title="Home">
-			<Head><title>Artful One</title></Head>
 			<Center>
 				<VStack mt="2em">
 					<Hero

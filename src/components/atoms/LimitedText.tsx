@@ -1,4 +1,9 @@
-export const LimitedText = (props) => {
+export interface LimitedTextProps {
+	text: string,
+	maxLength: number,
+	fromEnd?: number,
+};
+export const LimitedText = (props: LimitedTextProps): JSX.Element => {
 	const {
 		maxLength,
 		text,
