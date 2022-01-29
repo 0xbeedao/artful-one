@@ -5,8 +5,8 @@ import { RiCopyrightFill } from 'react-icons/ri';
 
 const LightIcon = () => <Icon as={GiSun} />;
 const DarkIcon = () => <Icon as={GiMoon} />;
-const Copyright = () => <Icon as={RiCopyrightFill} pr="0.35rem" h={6} w={6} verticalAlign="text-top" />;
-const AtSymbol = () => <Icon as={HiAtSymbol} pr="0.35rem" h={6} w={6} verticalAlign="text-top" />;
+const Copyright = () => <Icon as={RiCopyrightFill} pr="0.35rem" h={5} w={5} verticalAlign="text-top" />;
+const AtSymbol = () => <Icon as={HiAtSymbol} pr="0.35rem" h={5} w={5} verticalAlign="text-top" />;
 
 export default function Footer(): JSX.Element {
 	const { toggleColorMode } = useColorMode();
@@ -20,7 +20,7 @@ export default function Footer(): JSX.Element {
 				icon={useColorModeValue(<LightIcon />, <DarkIcon />)}
 			/>
 			<Spacer />
-			<Text fontSize="md" lineHeight="1.5rem" pt="0.25rem">
+			<Text fontSize="md" lineHeight="1.5rem" pt="0.25rem" color={useColorModeValue('primary.700', 'primary.200')}>
 				<Copyright />
 				{new Date().getFullYear()}&nbsp;
 				<AtSymbol />

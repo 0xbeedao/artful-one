@@ -14,7 +14,7 @@ export default function PrimaryTemplate({ pageKey, title, children }: PrimaryTem
 	return (
 		<Box id={pageKey}>
 			<Head><title>Artful One | { title }</title></Head>
-			<Flex minH="90vh" direction="column">
+			<Flex minH="100vh" direction="column">
 				<Header />
 				<Box flex={1}>
 					{children}
