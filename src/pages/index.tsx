@@ -18,6 +18,9 @@ export default function Home() {
 						artTitle="The Star"
 						media="Virtual Fresco"
 						artist="0xBigBee"
+						ctaLink="/#tbd"
+						ctaText="Explore"
+						alt="Image of the Star"
 					/>
 				</VStack>
 			</Center>

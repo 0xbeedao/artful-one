@@ -27,7 +27,7 @@ export default function WalletButton(): JSX.Element {
 			return `Connected to ${network}`;
 		}
 		return `Connect to ${network}`;
-	}, [networks, chainId]);
+	}, [networks, chainId, isConnected]);
 
   return (
     <>

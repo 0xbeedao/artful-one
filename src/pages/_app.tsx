@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
 				}}
 				>
 				<ChakraProvider theme={theme}>
-					<Component {...pageProps} />;
+					<Component {...pageProps} />
 				</ChakraProvider>
 			</WalletProvider>
 		</>
