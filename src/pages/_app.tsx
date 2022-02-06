@@ -1,3 +1,5 @@
+import 'next-pagination/dist/index.css';
+
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import { WalletProvider } from '@raidguild/quiver';
 import { Toaster, toast } from "react-hot-toast";

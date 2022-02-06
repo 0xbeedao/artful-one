@@ -2,7 +2,16 @@ import { Box, Image, Text, useColorModeValue } from '@chakra-ui/react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-export const FramedArt = (props) => {
+export interface FramedArtProps {
+	src: string;
+	alt?: string;
+	title: string;
+	artist?: string;
+	media?: string;
+	price?: number;
+}
+
+export default function FramedArt(props: FramedArtProps):JSX.Element {
 	const { src, alt, title, artist, media, price } = props;
 	const textColor = useColorModeValue('primary.800', 'primary.200');
 

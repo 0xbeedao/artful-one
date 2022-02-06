@@ -1,4 +1,5 @@
 import { Box, Flex, Icon, IconButton, Spacer, Text, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import Link from 'next/link';
 import { GiMoon, GiSun } from 'react-icons/gi';
 import { HiAtSymbol } from 'react-icons/hi';
 import { RiCopyrightFill } from 'react-icons/ri';
@@ -23,8 +24,12 @@ export default function Footer(): JSX.Element {
 			<Text fontSize="md" lineHeight="1.5rem" pt="0.25rem" color={useColorModeValue('primary.700', 'primary.200')}>
 				<Copyright />
 				{new Date().getFullYear()}&nbsp;
-				<AtSymbol />
-				DevBruce
+				<a href="https://github.com/0xbeedao">
+					<>
+						<AtSymbol />
+						DevBruce
+					</>
+				</a>
 			</Text>
 		</Flex>
 	);

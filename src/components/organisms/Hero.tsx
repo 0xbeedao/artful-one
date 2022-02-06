@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 import React from "react";
 
-import { FramedArt } from "../molecules/FramedArt";
+import FramedArt from "../molecules/FramedArt";
 
 interface HeroProps {
 	artTitle: string;
@@ -22,7 +22,9 @@ interface HeroProps {
 	alt: string;
 	artist: string;
 	media: string;
-	price?: string;
+	price?: number;
+	height: number;
+	width: number;
 }
 
 export default function Hero(props: HeroProps) {
@@ -36,7 +38,7 @@ export default function Hero(props: HeroProps) {
 		alt,
 		artist,
 		media,
-		price = 'NFS',
+		price,
 	} = props;
 	const textColor = useColorModeValue('primary.700', 'primary.300');
 

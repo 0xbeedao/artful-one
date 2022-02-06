@@ -12,7 +12,9 @@ export default function Home() {
 			<Center>
 				<VStack mt="2em">
 					<Hero
-						image="/images/star_1a.jpg"
+						height={653}
+						width={399}
+						image="/art/star_1a.jpg"
 						title="Welcome"
 						subtitle="Home of my NFT and (sm)Art Contract experiments."
 						artTitle="The Star"
