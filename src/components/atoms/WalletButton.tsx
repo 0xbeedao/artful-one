@@ -1,4 +1,4 @@
-import { Button, Heading, Tooltip } from '@chakra-ui/react';
+import { Button, Text, Tooltip } from '@chakra-ui/react';
 import { useWallet } from '@raidguild/quiver';
 import { useMemo } from 'react';
 
@@ -20,13 +20,13 @@ export default function WalletButton(): JSX.Element {
 		label = isConnected ? 'Connected' : 'Connect Wallet';
 	}
 
-	const tip:string = useMemo(() => {
+	const tip = useMemo(() => {
 		const network = networks[chainId] ? networks[chainId].name : 'Unknown';
 
 		if (isConnected) {
-			return `Connected to ${network}`;
+			return <Text>Connected to {network}<br/>click to disconnect</Text>;
 		}
-		return `Connect to ${network}`;
+		return <Text>Connect to {network}</Text>;
 	}, [networks, chainId, isConnected]);
 
   return (
@@ -40,12 +40,11 @@ export default function WalletButton(): JSX.Element {
         </Button>
       )}
       {isConnected && (
-        <>
-          <Tooltip label={tip}>
-						<Heading fontSize="md" d="inline-block"><LimitedText text={address} maxLength={10} fromEnd={4} /></Heading>
-					</Tooltip>
-          <Button onClick={() => disconnect()}>Disconnect</Button>
-        </>
+				<Tooltip label={tip} placement="bottom-start">
+        	<Button onClick={() => disconnect()}>
+						<LimitedText text={address} maxLength={10} fromEnd={4}></LimitedText>
+					</Button>
+				</Tooltip>
       )}
     </>
   );

@@ -1,10 +1,11 @@
-import { HStack, Heading, Icon, Spacer, useColorModeValue } from '@chakra-ui/react';
+import { HStack, Heading, Icon, Image, Spacer, Text, useColorModeValue } from '@chakra-ui/react';
 import { Box } from "@chakra-ui/react";
-import Image from 'next/image';
+import { useWallet } from '@raidguild/quiver';
 import Link from 'next/link';
 import { GiAbstract074, GiCardAceHearts } from 'react-icons/gi';
 
 import WalletButton from '../atoms/WalletButton';
+import NetworkChanger from '../molecules/NetworkChanger/NetworkChanger';
 
 interface HeaderLinkProps {
 	href: string;
@@ -27,14 +28,17 @@ export function HeaderLink({ href, children, icon }: HeaderLinkProps): JSX.Eleme
 
 export default function Header(): JSX.Element {
 	const logo = useColorModeValue('/images/bee-logo-circle.png', '/images/bee-logo-circle-dark.png');
+	const { address } = useWallet();
 
 	return (
 		<Box>
-			<Box position="absolute" x={1} y={1}>
+			<Box id="logo" position="relative">
 				<Image
+				 	top={1}
+					left={1}
 					className="logo"
-					width={80}
-					height={80}
+					width={20}
+					height={20}
 					alt="Artful One"
 					src={logo}
 				/>
@@ -53,6 +57,7 @@ export default function Header(): JSX.Element {
 				<Spacer />
 				<HeaderLink href="/gallery" icon={GiAbstract074}>Gallery</HeaderLink>
 				<HeaderLink href="/tarot" icon={GiCardAceHearts}>Tarot Dealer</HeaderLink>
+				<NetworkChanger />
 				<WalletButton />
 			</HStack>
 		</Box >);

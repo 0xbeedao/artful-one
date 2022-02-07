@@ -96,10 +96,22 @@ const config = {
 						color: props.colorMode === 'dark' ? "secondary.500" : "primary.500",
 					}
 				},
+				".faded": {
+					color: props.colorMode === 'dark' ? "primary.300" : "primary.600",
+				},
 				".headerLink": {
 					cursor: "pointer",
 					_hover: {
 						color: props.colorMode === 'dark' ? "secondary.500" : "primary.500",
+					},
+				},
+				"#networkChanger": {
+					borderRadius: "md",
+					color: props.colorMode !== 'dark' ? "primary.100" : "primary.900",
+					bgColor: props.colorMode !== 'dark' ? "primary.800" : "primary.200",
+					borderColor: props.colorMode === 'dark' ? "primary.300" : "primary.600",
+					".chevron": {
+						color: props.colorMode !== 'dark' ? "primary.100" : "primary.900"
 					},
 				},
 			},

@@ -55,7 +55,7 @@ export default function GalleryTemplate(props: GalleryTemplateProps): JSX.Elemen
 					<VStack spacing="1rem">
 						<Heading fontSize="xl">{title}</Heading>
 						<Heading fontSize="lg" color="primary.400" pb="1rem">{subtitle}</Heading>
-						<SimpleGrid width="90%" spacing={50} align="center" verticalAlign="top" margin="0 auto" columns={columns}>
+						<SimpleGrid width="90%" spacing={50} textAlign="center" verticalAlign="top" margin="0 auto" columns={columns}>
 							{activeImages}
 						</SimpleGrid>
 						<Pagination total={images.length} sizes={sizes} />

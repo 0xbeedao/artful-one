@@ -20,7 +20,7 @@ export default function Home() {
 						artTitle="The Star"
 						media="Virtual Fresco"
 						artist="0xBigBee"
-						ctaLink="/#tbd"
+						ctaLink="/gallery"
 						ctaText="Explore"
 						alt="Image of the Star"
 					/>
