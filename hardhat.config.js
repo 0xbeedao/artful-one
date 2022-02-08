@@ -16,7 +16,7 @@ module.exports = {
 		]
 	},
 	typechain: {
-		outDir: './src/contracts',
+		outDir: './src/types',
 	}
 	/* 	networks: {
 			'matic_testnet': {

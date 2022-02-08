@@ -1,10 +1,11 @@
+import FramedArt, { FramedArtProps } from '@/components/molecules/FramedArt';
+import { GalleryDeployment } from '@/config/types';
+import useWindowSize from '@/hooks/useWindowSize';
 import { Box, Center, Heading, SimpleGrid, VStack } from '@chakra-ui/react';
 import Pagination from 'next-pagination';
 import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
 
-import useWindowSize from '../../hooks/useWindowSize';
-import FramedArt, { FramedArtProps } from '../molecules/FramedArt';
 import PrimaryTemplate from './Primary';
 
 interface GalleryTemplateProps {
@@ -12,11 +13,12 @@ interface GalleryTemplateProps {
 	pageTitle: string;
 	title: string;
 	subtitle: string;
-	images: FramedArtProps[];
+	gallery: GalleryDeployment;
 }
 
 export default function GalleryTemplate(props: GalleryTemplateProps): JSX.Element {
-	const { pageKey, pageTitle, subtitle, title, images } = props;
+	const { pageKey, pageTitle, subtitle, title, gallery } = props;
+	const { pieces } = gallery;
 	const { query } = useRouter();
 	const windowSize = useWindowSize();
 
@@ -34,7 +36,7 @@ export default function GalleryTemplate(props: GalleryTemplateProps): JSX.Elemen
 		return [3, [3,6,12,24,48]];
 	}, [windowSize]);
 
-	const activeImages = useMemo(() => {
+	const activePieces = useMemo(() => {
 		// default to 2 art pieces, unless we are super wide
 		let safe = { page: '1', size: columns === 3 ? '3': '2' };
 		if (query) {
@@ -45,8 +47,8 @@ export default function GalleryTemplate(props: GalleryTemplateProps): JSX.Elemen
 		const pageSize = size ? parseInt(size, 10) : 2;
 		const start = (pageNo - 1) * pageSize;
 		const end = start + pageSize;
-		return images.slice(start, end).map((image) => <FramedArt key={image.src} {...image} />);
-	}, [columns, images, query]);
+		return pieces.slice(start, end).map((piece) => <FramedArt key={piece.src} {...piece} />);
+	}, [columns, pieces, query]);
 
 	return (
 		<PrimaryTemplate pageKey={pageKey} title={pageTitle}>
@@ -56,9 +58,9 @@ export default function GalleryTemplate(props: GalleryTemplateProps): JSX.Elemen
 						<Heading fontSize="xl">{title}</Heading>
 						<Heading fontSize="lg" color="primary.400" pb="1rem">{subtitle}</Heading>
 						<SimpleGrid width="90%" spacing={50} textAlign="center" verticalAlign="top" margin="0 auto" columns={columns}>
-							{activeImages}
+							{activePieces}
 						</SimpleGrid>
-						<Pagination total={images.length} sizes={sizes} />
+						<Pagination total={pieces.length} sizes={sizes} />
 					</VStack>
 				</Center>
 			</Box>

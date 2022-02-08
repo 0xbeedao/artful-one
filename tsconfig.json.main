@@ -1,25 +1,17 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@/components/*": [
-        "src/components/*"
-      ],
-      "@/config/*": [
-        "src/config/*"
-      ],
-      "@/hooks/*": [
-        "src/hooks/*"
-      ],
-      "@/types/*": [
-        "src/types/*"
-      ]
-    },
+		"baseUrl": "./",
+		"paths": {
+			"@/components/*": ["src/components/*"],
+			"@/config/*": ["src/config/*"],
+			"@/hooks/*": ["src/hooks/*"],
+			"@/types/*": ["src/types/*"],
+		},
     "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
-      "es6"
+      "esnext"
     ],
     "allowJs": true,
     "skipLibCheck": true,
