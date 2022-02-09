@@ -56,7 +56,7 @@
     "typescript": "^4.5.4"
   },
   "importSort": {
-    ".js, .jsx, .es6, .es": {
+    ".js, .jsx, .es6, .es, .ts, .tsx": {
       "parser": "babylon",
       "style": "module",
       "options": {}

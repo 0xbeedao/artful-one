@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
 			<ColorModeScript initialColorMode={theme.config.initialColorMode} />
 			<WalletProvider
 				networks={SUPPORTED_NETWORKS}
-				defaultNetwork={DEFAULT_NETWORK}
+				defaultChainId={DEFAULT_NETWORK}
 				web3modalOptions={web3ModalOptions}
 				handleModalEvents={(eventName, error) => {
 					if (error) {
