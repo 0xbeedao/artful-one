@@ -2,6 +2,7 @@ import FramedArt, { FramedArtProps } from '@/components/molecules/FramedArt';
 import { GalleryDeployment } from '@/config/types';
 import useWindowSize from '@/hooks/useWindowSize';
 import { Box, Center, Heading, SimpleGrid, VStack } from '@chakra-ui/react';
+import { useWallet } from '@raidguild/quiver';
 import Pagination from 'next-pagination';
 import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
@@ -18,7 +19,8 @@ interface GalleryTemplateProps {
 
 export default function GalleryTemplate(props: GalleryTemplateProps): JSX.Element {
 	const { pageKey, pageTitle, subtitle, title, gallery } = props;
-	const { pieces } = gallery;
+	const { pieces, deployments } = gallery;
+	const { chainId } = useWallet();
 	const { query } = useRouter();
 	const windowSize = useWindowSize();
 
@@ -47,8 +49,10 @@ export default function GalleryTemplate(props: GalleryTemplateProps): JSX.Elemen
 		const pageSize = size ? parseInt(size, 10) : 2;
 		const start = (pageNo - 1) * pageSize;
 		const end = start + pageSize;
-		return pieces.slice(start, end).map((piece) => <FramedArt key={piece.src} {...piece} />);
-	}, [columns, pieces, query]);
+		return pieces.slice(start, end).map((piece) => (
+			<FramedArt key={piece.src} contracts={deployments} {...piece} />
+		));
+	}, [columns, deployments, pieces, query]);
 
 	return (
 		<PrimaryTemplate pageKey={pageKey} title={pageTitle}>
@@ -57,7 +61,13 @@ export default function GalleryTemplate(props: GalleryTemplateProps): JSX.Elemen
 					<VStack spacing="1rem">
 						<Heading fontSize="xl">{title}</Heading>
 						<Heading fontSize="lg" color="primary.400" pb="1rem">{subtitle}</Heading>
-						<SimpleGrid width="90%" spacing={50} textAlign="center" verticalAlign="top" margin="0 auto" columns={columns}>
+						 <SimpleGrid
+							width="90%"
+							spacing={50}
+							textAlign="center"
+							verticalAlign="top"
+							margin="0 auto"columns={columns}
+						>
 							{activePieces}
 						</SimpleGrid>
 						<Pagination total={pieces.length} sizes={sizes} />

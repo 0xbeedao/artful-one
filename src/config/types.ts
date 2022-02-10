@@ -1,3 +1,7 @@
+interface NftDeployments {
+	[chain: string]: number;  // chain: index
+}
+
 export interface ArtProps {
 	src: string;
 	alt?: string;
@@ -5,6 +9,7 @@ export interface ArtProps {
 	artist?: string;
 	media?: string;
 	contract?: string;
+	deployments?: NftDeployments
 }
 
 type Metadata = {
@@ -21,8 +26,13 @@ export type Nft = {
   metadata: Metadata;
 };
 
+interface DeploymentMap {
+	[chain: string]: string;
+}
+
 export interface GalleryDeployment {
 	imageCid: string;
 	metadataCid: string;
 	pieces: ArtProps[];
+	deployments: DeploymentMap;
 }

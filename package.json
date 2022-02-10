@@ -7,7 +7,6 @@
     "start": "next start",
     "lint": "next lint"
   },
-	"type": "module",
   "dependencies": {
     "@chakra-ui/react": "^1.7.3",
     "@emotion/react": "^11",
@@ -20,7 +19,6 @@
     "classnames": "^2.3.1",
     "ethers": "^5.5.3",
     "framer-motion": "^5",
-    "hardhat": "^2.8.3",
     "next": "12.0.7",
     "next-pagination": "^3.1.1",
     "react": "17.0.2",
@@ -31,16 +29,9 @@
     "web3modal": "^1.9.4"
   },
   "devDependencies": {
-    "@nomiclabs/hardhat-ethers": "^2.0.4",
-    "@nomiclabs/hardhat-waffle": "^2.0.2",
-    "@openzeppelin/contracts": "^4.4.2",
-    "@pinata/sdk": "^1.1.23",
-    "@typechain/ethers-v5": "^9.0.0",
-    "@typechain/hardhat": "^4.0.0",
     "@types/node": "^17.0.8",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
-    "chai": "^4.3.6",
     "dotenv": "^16.0.0",
     "eslint": "^8.5.0",
     "eslint-config-next": "12.0.7",
@@ -49,10 +40,6 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "ethereum-waffle": "^3.4.0",
-    "ipfs-http-client": "^56.0.0",
-    "prompt": "^1.2.1",
-    "ts-node": "^10.4.0",
-    "typechain": "^7.0.0",
     "typescript": "^4.5.4"
   },
   "importSort": {
