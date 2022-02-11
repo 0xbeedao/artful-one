@@ -30,7 +30,7 @@ export default function FramedArt(props: FramedArtProps):JSX.Element {
 				<Text color={textColor} className="title">{title}</Text>
 				{artist && <Text className="artist">{artist}</Text>}
 				{media && <Text className="media">{media}</Text>}
-				<Box color={textColor} className={classnames({ price: true, nfs: (!deployments) })}>
+				<Box color={textColor} className={classnames({ price: true, nfs: (!deployments) })} textAlign="center">
 					<OpenSeaLinks contracts={contracts} deployments={deployments} />
 				</Box>
 			</Box>

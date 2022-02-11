@@ -3,8 +3,12 @@ import { ArtProps, GalleryDeployment } from './types';
 export const galleries: GalleryDeployment[] = [
 	{
 	  imageCid: 'bafybeiaqjcc6qrnvnwxsnc3m5uotquyk6wkzzowuvxa52frhijixeloqbe',
-	  metadataCid: 'bafybeiazjlqz2z7lx2lluhreuujgxv3hou7z2gowcn4omypja6w4zjl5bi',
+	  metadataCid: {
+			"0x89": "bafybeihmsjacnlmffd7763qy4bbwhqnsam3grwmtbf5c5v2amxmelw6wrq",
+			"0x13881": "bafybeiazjlqz2z7lx2lluhreuujgxv3hou7z2gowcn4omypja6w4zjl5bi",
+		},
 		deployments: {
+			"0x89": "0xbEFB257a2875bc7Db12C869Fe4E9c4aa4953225E",
 			"0x13881": '0xBdb6677e2de8fc3F61fd5D1Bba8DC0cd51B57641',
     },
 	  pieces: [
@@ -15,6 +19,7 @@ export const galleries: GalleryDeployment[] = [
 				"media": "virtual neon",
 				deployments: {
 					"0x13881": 4,
+					"0x89": 4,
 				},
 			},
 			{
@@ -24,6 +29,7 @@ export const galleries: GalleryDeployment[] = [
 				"media": "virtual pen",
 				deployments: {
 					"0x13881": 1,
+					"0x89": 1,
 				},
 			},
 			{
@@ -33,6 +39,7 @@ export const galleries: GalleryDeployment[] = [
 				"media": "ink",
 				deployments: {
 					"0x13881": 0,
+					"0x89": 0,
 				}
 			},
 			{
@@ -42,6 +49,7 @@ export const galleries: GalleryDeployment[] = [
 				"media": "ink",
 				deployments: {
 					"0x13881": 3,
+					"0x89": 3,
 				},
 			},
 			{
@@ -51,6 +59,7 @@ export const galleries: GalleryDeployment[] = [
 				"media": "mixed digital",
 				deployments: {
 					"0x13881": 2,
+					"0x89": 2,
 				},
 			},
 			{
@@ -60,6 +69,7 @@ export const galleries: GalleryDeployment[] = [
 				"media": "mixed digital",
 				deployments: {
 					"0x13881": 7,
+					"0x89": 7,
 				},
 			},
 			{
@@ -69,6 +79,7 @@ export const galleries: GalleryDeployment[] = [
 				"media": "ink",
 				deployments: {
 					"0x13881": 6,
+					"0x89": 6,
 				},
 			},
 			{
@@ -78,6 +89,7 @@ export const galleries: GalleryDeployment[] = [
 				"media": "mixed digital",
 				deployments: {
 					"0x13881": 5,
+					"0x89": 5,
 				},
 			}
 		],

@@ -32,7 +32,7 @@ interface DeploymentMap {
 
 export interface GalleryDeployment {
 	imageCid: string;
-	metadataCid: string;
-	pieces: ArtProps[];
+	metadataCid: DeploymentMap;
 	deployments: DeploymentMap;
+	pieces: ArtProps[];
 }

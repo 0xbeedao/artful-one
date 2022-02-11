@@ -1,4 +1,4 @@
-import { HStack, Link, Text, useColorModeValue } from '@chakra-ui/react';
+import { Link, SimpleGrid, Text, useColorModeValue } from '@chakra-ui/react';
 import { useWallet } from '@raidguild/quiver';
 import React from 'react';
 
@@ -14,11 +14,17 @@ interface OpenSeaLinkProps {
 }
 
 const OPENSEA_URLS: Record<string, string> = {
+	'0x89': 'https://opensea.io/assets/matic/',
 	'0x13881': 'https://testnets.opensea.io/assets/mumbai',
 };
 
 const OPENSEA_NAMES: Record<string, string> = {
 	'0x13881': 'OpenSea Mumbai',
+	'0x89': 'OpenSea Polygon'
+};
+
+function isTestNetwork(chainId: string): boolean {
+	return chainId === '0x13881';
 };
 
 export function OpenSeaLink(props: OpenSeaLinkProps):JSX.Element {
@@ -34,13 +40,17 @@ export function OpenSeaLink(props: OpenSeaLinkProps):JSX.Element {
 
 export default function OpenSeaLinks(props: OpenSeaLinksProps):JSX.Element {
 	const { contracts, deployments } = props;
+	const { chainId } = useWallet();
 
-	if (!deployments || !contracts) {
+	const allChains = deployments ? Object.keys(deployments) : [];
+	const activeChains = isTestNetwork(chainId) ? allChains : allChains.filter(c => !isTestNetwork(c));
+
+	if (!activeChains || !contracts) {
 		return <Text>NFS</Text>;
 	}
 
-	if (Object.values(deployments).length === 1) {
-		const chainId = Object.keys(deployments)[0];
+	if (activeChains.length === 1) {
+		const chainId = activeChains[0];
 		return (
 			<OpenSeaLink
 				contract={contracts[chainId]}
@@ -50,14 +60,14 @@ export default function OpenSeaLinks(props: OpenSeaLinksProps):JSX.Element {
 	}
 
 	return (
-		<HStack spacing={2}>
-			{ Object.keys(deployments).map((chainId) => (
+		<SimpleGrid>
+			{ activeChains.map((chainId) => (
 				<OpenSeaLink
 					key={`${chainId}/${deployments[chainId]}`}
 					contract={contracts[chainId]}
 					tokenIndex={deployments[chainId]}
 					chainId={chainId} />
 			))}
-		</HStack>
+		</SimpleGrid>
 	);
 }

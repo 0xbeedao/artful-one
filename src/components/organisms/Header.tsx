@@ -26,6 +26,8 @@ export function HeaderLink({ href, children, icon }: HeaderLinkProps): JSX.Eleme
 	);
 }
 
+// <HeaderLink href="/tarot" icon={GiCardAceHearts}>Tarot Dealer</HeaderLink>
+
 export default function Header(): JSX.Element {
 	const logo = useColorModeValue('/images/bee-logo-circle.png', '/images/bee-logo-circle-dark.png');
 	const { address } = useWallet();
@@ -56,7 +58,6 @@ export default function Header(): JSX.Element {
 				</Link>
 				<Spacer />
 				<HeaderLink href="/gallery" icon={GiAbstract074}>Gallery</HeaderLink>
-				<HeaderLink href="/tarot" icon={GiCardAceHearts}>Tarot Dealer</HeaderLink>
 				<NetworkChanger />
 				<WalletButton />
 			</HStack>
