@@ -21,7 +21,7 @@ export default function Network(props: NetworkProps): JSX.Element {
 		<HStack spacing={0.25} cursor="pointer" color="whitish" fontWeight={300} _hover={hover}>
 			<NetworkIcon network={chainId} color={color} width={18} height={18} />
 			<Text>{cleanName}</Text>
-			{showIcon && <Box pl="0.5rem"><Chevron isOpen={isOpen} /></Box>}
+			{showIcon && <Box pl="0.5rem"><Chevron color={color} isOpen={isOpen} /></Box>}
 		</HStack>
 	);
 }

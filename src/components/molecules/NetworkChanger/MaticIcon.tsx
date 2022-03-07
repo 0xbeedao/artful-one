@@ -9,7 +9,7 @@ interface MaticIconProps {
 
 export default function MaticIcon(props: MaticIconProps) {
 	const { height, width, color } = props;
-	const fillStyle = { mixBlendMode: 'soft-light' };
+	const fillStyle: Record<string, string> = { mixBlendMode: 'soft-light' };
 	return (
 		<Box verticalAlign="center" color={color}>
 			<svg
@@ -54,7 +54,7 @@ export default function MaticIcon(props: MaticIconProps) {
 					<circle
 						strokeOpacity=".097"
 						stroke="#000"
-						strokeLinejoin="square"
+						strokeLinejoin="miter"
 						cx="16"
 						cy="15"
 						r="14.5"
