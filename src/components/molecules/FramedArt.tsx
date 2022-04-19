@@ -13,10 +13,11 @@ export interface FramedArtProps {
 	media?: string;
 	contracts?: Record<string, string>;
 	deployments?: Record<string, number>;
+	priced: boolean;
 }
 
 export default function FramedArt(props: FramedArtProps):JSX.Element {
-	const { src, alt, title, artist, media, contracts, deployments } = props;
+	const { src, alt, title, artist, media, contracts, deployments, priced } = props;
 	const textColor = useColorModeValue('primary.800', 'primary.200');
 
 	console.log(`FramedArt: ${JSON.stringify(contracts)} ${JSON.stringify(deployments)}`);
@@ -30,23 +31,16 @@ export default function FramedArt(props: FramedArtProps):JSX.Element {
 				<Text color={textColor} className="title">{title}</Text>
 				{artist && <Text className="artist">{artist}</Text>}
 				{media && <Text className="media">{media}</Text>}
+				{priced && (
 				<Box color={textColor} className={classnames({ price: true, nfs: (!deployments) })} textAlign="center">
 					<OpenSeaLinks contracts={contracts} deployments={deployments} />
 				</Box>
+				)}
 			</Box>
 		</Box>
 	);
 };
 
-FramedArt.propTypes = {
-	src: PropTypes.string.isRequired,
-	alt: PropTypes.string,
-	title: PropTypes.string,
-	artist: PropTypes.string,
-	media: PropTypes.string,
-	price: PropTypes.any
-};
-
 FramedArt.defaultProps = {
-	price: 'NFS',
+	priced: true,
 };
