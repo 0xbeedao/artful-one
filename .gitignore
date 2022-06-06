@@ -24,5 +24,4 @@ yarn-error.log*
 
 artifacts/*
 cache/*
-src/types/*
 

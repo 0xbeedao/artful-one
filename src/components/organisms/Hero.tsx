@@ -105,7 +105,7 @@ export default function Hero(props: HeroProps) {
 					title={artTitle}
 					artist={artist}
 					media={media}
-					price={price}
+					priced={price > 0}
 				/>
 			</Box>
 		</Flex>
