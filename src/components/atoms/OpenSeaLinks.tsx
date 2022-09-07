@@ -1,10 +1,10 @@
+import { NftDeployment, NftDeployments } from '@/config/types';
 import { Link, SimpleGrid, Text, useColorModeValue } from '@chakra-ui/react';
 import { useWallet } from '@raidguild/quiver';
-import React from 'react';
+import React, { useMemo } from 'react';
 
 interface OpenSeaLinksProps {
-	contracts: Record<string, string> | undefined;
-	deployments: Record<string, number> | undefined;
+	deployments: NftDeployments;
 }
 
 interface OpenSeaLinkProps {
@@ -38,14 +38,22 @@ export function OpenSeaLink(props: OpenSeaLinkProps):JSX.Element {
 	);
 }
 
+const defaultDeployment: NftDeployment = {
+	contract: '',
+	tokenId: 0,
+	name: '',
+};
+
 export default function OpenSeaLinks(props: OpenSeaLinksProps):JSX.Element {
-	const { contracts, deployments } = props;
+	const { deployments } = props;
 	const { chainId } = useWallet();
 
 	const allChains = deployments ? Object.keys(deployments) : [];
+	console.log(`OpenSeaLinks: ${chainId} ${JSON.stringify(allChains)}`);
 	const activeChains = isTestNetwork(chainId) ? allChains : allChains.filter(c => !isTestNetwork(c));
+	const deployment:NftDeployment = useMemo(() => deployments[chainId] ?? defaultDeployment, [deployments, chainId]);
 
-	if (!activeChains || !contracts) {
+	if (!activeChains ) {
 		return <Text>NFS</Text>;
 	}
 
@@ -53,8 +61,8 @@ export default function OpenSeaLinks(props: OpenSeaLinksProps):JSX.Element {
 		const chainId = activeChains[0];
 		return (
 			<OpenSeaLink
-				contract={contracts[chainId]}
-				tokenIndex={deployments[chainId]}
+				contract={deployment.contract}
+				tokenIndex={deployment.tokenId}
 				chainId={chainId} />
 		);
 	}

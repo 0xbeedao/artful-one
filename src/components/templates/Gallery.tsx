@@ -1,5 +1,5 @@
 import FramedArt, { FramedArtProps } from '@/components/molecules/FramedArt';
-import { GalleryDeployment } from '@/config/types';
+import { ArtPiece, Gallery, GalleryDeployment } from '@/config/types';
 import useWindowSize from '@/hooks/useWindowSize';
 import { Box, Center, Heading, SimpleGrid, VStack } from '@chakra-ui/react';
 import { useWallet } from '@raidguild/quiver';
@@ -7,6 +7,7 @@ import Pagination from 'next-pagination';
 import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
 
+import FramedNft from '../molecules/FramedNft';
 import PrimaryTemplate from './Primary';
 
 interface GalleryTemplateProps {
@@ -14,12 +15,12 @@ interface GalleryTemplateProps {
 	pageTitle: string;
 	title: string;
 	subtitle: string;
-	gallery: GalleryDeployment;
+	gallery: Gallery,
+	artPieces: ArtPiece[],
 }
 
 export default function GalleryTemplate(props: GalleryTemplateProps): JSX.Element {
-	const { pageKey, pageTitle, subtitle, title, gallery } = props;
-	const { pieces, deployments } = gallery;
+	const { pageKey, pageTitle, subtitle, title, gallery, artPieces } = props;
 	const { chainId } = useWallet();
 	const { query } = useRouter();
 	const windowSize = useWindowSize();
@@ -49,10 +50,10 @@ export default function GalleryTemplate(props: GalleryTemplateProps): JSX.Elemen
 		const pageSize = size ? parseInt(size, 10) : 2;
 		const start = (pageNo - 1) * pageSize;
 		const end = start + pageSize;
-		return pieces.slice(start, end).map((piece) => (
-			<FramedArt key={piece.src} contracts={deployments} {...piece} />
+		return artPieces.slice(start, end).map((piece) => (
+			<FramedNft key={piece.id} {...piece} />
 		));
-	}, [columns, deployments, pieces, query]);
+	}, [artPieces, columns, query]);
 
 	return (
 		<PrimaryTemplate pageKey={pageKey} title={pageTitle}>
@@ -70,7 +71,7 @@ export default function GalleryTemplate(props: GalleryTemplateProps): JSX.Elemen
 						>
 							{activePieces}
 						</SimpleGrid>
-						<Pagination total={pieces.length} sizes={sizes} />
+						<Pagination total={artPieces.length} sizes={sizes} />
 					</VStack>
 				</Center>
 			</Box>

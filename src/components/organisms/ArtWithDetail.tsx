@@ -1,3 +1,4 @@
+import type { ArtPiece } from "@/config/types";
 import {
 	Box,
 	Button,
@@ -23,7 +24,8 @@ interface ArtDetailProps {
 	price?: number;
 	height: number;
 	width: number;
-	children: JSX.Element;
+	children?: JSX.Element;
+	slug: string;
 }
 
 export default function ArtWithDetail(props: ArtDetailProps) {
@@ -37,6 +39,7 @@ export default function ArtWithDetail(props: ArtDetailProps) {
 		media,
 		price,
 		children,
+		slug = '',
 	} = props;
 	const textColor = useColorModeValue('primary.700', 'primary.300');
 
@@ -85,9 +88,11 @@ export default function ArtWithDetail(props: ArtDetailProps) {
 					artist={artist}
 					media={media}
 					priced={false}
+					slug={slug}
 				/>
 			</Box>
 		</Flex>
 	);
 }
+
 

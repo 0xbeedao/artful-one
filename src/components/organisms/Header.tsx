@@ -2,8 +2,11 @@ import { HStack, Heading, Icon, Image, Spacer, Text, useColorModeValue } from '@
 import { Box } from "@chakra-ui/react";
 import { useWallet } from '@raidguild/quiver';
 import Link from 'next/link';
+import { useEffect, useMemo, useState } from 'react';
 import { GiAbstract074, GiCardAceHearts } from 'react-icons/gi';
+import { getGalleries } from 'src/services/content';
 
+import type { Gallery } from '../../config/types';
 import WalletButton from '../atoms/WalletButton';
 import NetworkChanger from '../molecules/NetworkChanger/NetworkChanger';
 
@@ -30,7 +33,24 @@ export function HeaderLink({ href, children, icon }: HeaderLinkProps): JSX.Eleme
 
 export default function Header(): JSX.Element {
 	const logo = useColorModeValue('/images/bee-logo-circle.png', '/images/bee-logo-circle-dark.png');
+	const [galleries, setGalleries] = useState<Gallery[]>([]);
 	const { address } = useWallet();
+
+	useEffect(() => {
+		console.log('Header: useEffect');
+		getGalleries().then((galleries) => {
+			console.log('galleries', galleries);
+			setGalleries(galleries);
+		});
+	}, []);
+
+	const galleryLinks = useMemo(() => {
+		const links = galleries.map(
+			(gallery) => <HeaderLink key={gallery.slug} href={`/gallery/${gallery.slug}`} icon={GiAbstract074}>{gallery.name}</HeaderLink>
+		);
+		console.log(`Links: ${links.length}`);
+		return links;
+	}, [galleries]);
 
 	return (
 		<Box>
@@ -57,7 +77,7 @@ export default function Header(): JSX.Element {
 					</HStack>
 				</Link>
 				<Spacer />
-				<HeaderLink href="/gallery" icon={GiAbstract074}>Gallery</HeaderLink>
+				{ galleryLinks }
 				<NetworkChanger />
 				<WalletButton />
 			</HStack>

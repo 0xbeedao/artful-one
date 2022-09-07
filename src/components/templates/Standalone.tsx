@@ -4,13 +4,13 @@ import Head from 'next/head';
 import Footer from '../organisms/Footer';
 import Header from '../organisms/Header';
 
-export interface PrimaryTemplateProps {
+export interface StandaloneTemplateProps {
 	pageKey: string,
 	title: string,
 	children: React.ReactNode
 };
 
-export default function PrimaryTemplate({ pageKey, title, children }: PrimaryTemplateProps): JSX.Element {
+export default function StandaloneTemplate({ pageKey, title, children }: StandaloneTemplateProps): JSX.Element {
 	return (
 		<Box id={pageKey}>
 			<Head><title>Artful One | { title }</title></Head>
