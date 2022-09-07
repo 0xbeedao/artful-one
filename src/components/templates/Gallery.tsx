@@ -1,5 +1,5 @@
 import FramedArt, { FramedArtProps } from '@/components/Art/FramedArt';
-import { ArtPiece, Gallery, GalleryDeployment } from '@/config/types';
+import { ArtPiece, Gallery } from '@/config/types';
 import useWindowSize from '@/hooks/useWindowSize';
 import { Box, Center, Heading, SimpleGrid, VStack } from '@chakra-ui/react';
 import { useWallet } from '@raidguild/quiver';
