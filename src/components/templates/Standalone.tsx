@@ -1,8 +1,8 @@
 import { Box, Flex } from "@chakra-ui/react";
 import Head from 'next/head';
 
-import Header from '../organisms/Header';
 import Footer from '../site/Footer';
+import Header from '../site/Header';
 
 export interface StandaloneTemplateProps {
 	pageKey: string,

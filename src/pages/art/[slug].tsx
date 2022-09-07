@@ -1,7 +1,5 @@
 import { SimpleArtWithDetail } from "@/components/Art/SimpleArtWithDetail";
 import PrimaryTemplate from '@/components/templates/Primary';
-import { galleries } from '@/config/art';
-import { baseUrl } from '@/config/cms';
 import type { ArtPiece, ArtProps } from '@/config/types';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';

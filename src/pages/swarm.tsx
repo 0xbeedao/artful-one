@@ -22,6 +22,7 @@ export default function Home() {
 						media="Multimedia"
 						artist="Bruce Kroeze"
 						alt="Image of a Bee"
+						slug=""
 						price={0}
 					>
 						<Box

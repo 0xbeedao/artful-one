@@ -1,6 +1,4 @@
-import { galleries } from '@/config/art';
 import { ArtPiece, Gallery, RawNftDeployment } from '@/config/types';
-import { merge } from 'lodash';
 import { useRouter } from 'next/router';
 import React, { useEffect, useMemo, useState } from 'react';
 
