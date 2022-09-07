@@ -7,8 +7,8 @@ import { GiAbstract074, GiCardAceHearts } from 'react-icons/gi';
 import { getGalleries } from 'src/services/content';
 
 import type { Gallery } from '../../config/types';
-import WalletButton from '../atoms/WalletButton';
-import NetworkChanger from '../molecules/NetworkChanger/NetworkChanger';
+import NetworkChanger from '../Wallet/NetworkChanger/NetworkChanger';
+import WalletButton from '../Wallet/WalletButton';
 
 interface HeaderLinkProps {
 	href: string;

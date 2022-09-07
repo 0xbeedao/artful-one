@@ -2,9 +2,9 @@ import type { ArtPiece } from "@/config/types";
 import { Box, Center, Flex, Heading, Stack, VStack, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 
-import FramedArt from "../molecules/FramedArt";
-import FramedNft from "../molecules/FramedNft";
 import ArtWithDetail from "./ArtWithDetail";
+import FramedArt from "./FramedArt";
+import FramedNft from "./FramedNft";
 
 export interface SimpleArtDetailProps {
 	art: ArtPiece;

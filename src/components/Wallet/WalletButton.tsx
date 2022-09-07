@@ -2,7 +2,7 @@ import { Button, Text, Tooltip } from '@chakra-ui/react';
 import { useWallet } from '@raidguild/quiver';
 import { useMemo } from 'react';
 
-import { LimitedText } from './LimitedText';
+import { LimitedText } from '../atoms/LimitedText';
 
 export default function WalletButton(): JSX.Element {
   const {

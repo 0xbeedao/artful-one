@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 import React from "react";
 
-import FramedArt from "../molecules/FramedArt";
+import FramedArt from "./FramedArt";
 
 interface ArtDetailProps {
 	artTitle: string;

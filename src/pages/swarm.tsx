@@ -1,7 +1,7 @@
 import { Box, Center, Spacer, Text, VStack, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 
-import ArtWithDetail from '../components/organisms/ArtWithDetail';
+import ArtWithDetail from '../components/Art/ArtWithDetail';
 import StandaloneTemplate from '../components/templates/Standalone';
 
 // import image from "../public/images/star_1a.jpg";

@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 import React from "react";
 
-import FramedArt from "../molecules/FramedArt";
+import FramedArt from "./FramedArt";
 
 interface HeroProps {
 	artTitle: string;
@@ -24,7 +24,8 @@ interface HeroProps {
 	media: string;
 	price?: number;
 	height: number;
-	width: number;
+	width: number
+	slug: string;
 }
 
 export default function Hero(props: HeroProps) {
@@ -39,6 +40,7 @@ export default function Hero(props: HeroProps) {
 		artist,
 		media,
 		price,
+		slug,
 	} = props;
 	const textColor = useColorModeValue('primary.700', 'primary.300');
 
@@ -106,6 +108,7 @@ export default function Hero(props: HeroProps) {
 					artist={artist}
 					media={media}
 					priced={price > 0}
+					slug={slug}
 				/>
 			</Box>
 		</Flex>

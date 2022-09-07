@@ -1,7 +1,7 @@
 import { Center, VStack } from '@chakra-ui/react';
 import React from 'react';
 
-import Hero from '../components/organisms/Hero';
+import Hero from '../components/Art/Hero';
 import PrimaryTemplate from '../components/templates/Primary';
 
 // import image from "../public/images/star_1a.jpg";
@@ -23,6 +23,7 @@ export default function Home() {
 						ctaLink="/gallery"
 						ctaText="Explore"
 						alt="Image of the Star"
+						slug="-"
 					/>
 				</VStack>
 			</Center>

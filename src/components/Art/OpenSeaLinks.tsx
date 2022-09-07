@@ -69,13 +69,16 @@ export default function OpenSeaLinks(props: OpenSeaLinksProps):JSX.Element {
 
 	return (
 		<SimpleGrid>
-			{ activeChains.map((chainId) => (
-				<OpenSeaLink
-					key={`${chainId}/${deployments[chainId]}`}
-					contract={contracts[chainId]}
-					tokenIndex={deployments[chainId]}
-					chainId={chainId} />
-			))}
+			{ activeChains.map((chainId) => {
+				const { contract, tokenId } = deployments[chainId] ?? defaultDeployment;
+				return (
+					<OpenSeaLink
+						key={`${chainId}/${deployments[chainId]}`}
+						contract={contract}
+						tokenIndex={tokenId}
+						chainId={chainId} />
+				);
+			})}
 		</SimpleGrid>
 	);
 }

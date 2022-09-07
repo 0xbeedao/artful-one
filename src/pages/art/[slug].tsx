@@ -1,4 +1,4 @@
-import { SimpleArtWithDetail } from "@/components/organisms/SimpleArtWithDetail";
+import { SimpleArtWithDetail } from "@/components/Art/SimpleArtWithDetail";
 import PrimaryTemplate from '@/components/templates/Primary';
 import { galleries } from '@/config/art';
 import { baseUrl } from '@/config/cms';

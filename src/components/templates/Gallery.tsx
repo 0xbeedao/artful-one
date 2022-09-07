@@ -1,4 +1,4 @@
-import FramedArt, { FramedArtProps } from '@/components/molecules/FramedArt';
+import FramedArt, { FramedArtProps } from '@/components/Art/FramedArt';
 import { ArtPiece, Gallery, GalleryDeployment } from '@/config/types';
 import useWindowSize from '@/hooks/useWindowSize';
 import { Box, Center, Heading, SimpleGrid, VStack } from '@chakra-ui/react';
@@ -7,7 +7,7 @@ import Pagination from 'next-pagination';
 import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
 
-import FramedNft from '../molecules/FramedNft';
+import FramedNft from '../Art/FramedNft';
 import PrimaryTemplate from './Primary';
 
 interface GalleryTemplateProps {

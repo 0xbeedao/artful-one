@@ -6,7 +6,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
 
-import OpenSeaLinks from '../atoms/OpenSeaLinks';
+import OpenSeaLinks from './OpenSeaLinks';
 
 export interface FramedArtProps {
 	src: string;
