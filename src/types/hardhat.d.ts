@@ -81,13 +81,25 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.BeeMinter__factory>;
     getContractFactory(
+      name: "CardDealer",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.CardDealer__factory>;
+    getContractFactory(
       name: "CardDeck",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.CardDeck__factory>;
     getContractFactory(
+      name: "HeroicNamer",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.HeroicNamer__factory>;
+    getContractFactory(
       name: "TarotNFTDeck",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.TarotNFTDeck__factory>;
+    getContractFactory(
+      name: "TarotTitledDealer",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.TarotTitledDealer__factory>;
     getContractFactory(
       name: "TarotTitledDeck",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -179,15 +191,30 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.BeeMinter>;
     getContractAt(
+      name: "CardDealer",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.CardDealer>;
+    getContractAt(
       name: "CardDeck",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.CardDeck>;
     getContractAt(
+      name: "HeroicNamer",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.HeroicNamer>;
+    getContractAt(
       name: "TarotNFTDeck",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.TarotNFTDeck>;
+    getContractAt(
+      name: "TarotTitledDealer",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.TarotTitledDealer>;
     getContractAt(
       name: "TarotTitledDeck",
       address: string,
