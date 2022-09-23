@@ -1,4 +1,4 @@
-import { Center, VStack } from '@chakra-ui/react';
+import { Center, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
 
 import Hero from '../components/Art/Hero';
@@ -20,11 +20,15 @@ export default function Home() {
 						artTitle="The Star"
 						media="Virtual Fresco"
 						artist="0xBigBee"
-						ctaLink="/gallery"
-						ctaText="Explore"
+						ctaLink="/heroic-namer"
+						ctaText="Heroic Namer"
 						alt="Image of the Star"
 						slug="-"
-					/>
+					>
+						<Text>
+							My latest experiment is the Heroic Namer contract.  Give it a try!
+						</Text>
+					</Hero>
 				</VStack>
 			</Center>
 		</PrimaryTemplate>

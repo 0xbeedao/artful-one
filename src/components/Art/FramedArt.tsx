@@ -6,7 +6,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
 
-import OpenSeaLinks from './OpenSeaLinks';
+import OpenSeaLinkList from '../atoms/OpenSeaLinkList';
 
 export interface FramedArtProps {
 	src: string;
@@ -45,7 +45,7 @@ export default function FramedArt(props: FramedArtProps):JSX.Element {
 				{media && <Text className="media">{media}</Text>}
 				{priced && (
 				<Box color={textColor} className={classnames({ price: true, nfs: (!deployments) })} textAlign="center">
-					<OpenSeaLinks deployments={deployments} />
+					<OpenSeaLinkList deployments={deployments} />
 				</Box>
 				)}
 			</Box>

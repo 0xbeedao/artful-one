@@ -26,11 +26,13 @@ interface HeroProps {
 	height: number;
 	width: number
 	slug: string;
+	children?: React.ReactNode;
 }
 
 export default function Hero(props: HeroProps) {
 	const {
 		artTitle,
+		children,
 		title,
 		subtitle,
 		image,
@@ -79,6 +81,7 @@ export default function Hero(props: HeroProps) {
 				>
 					{subtitle}
 				</Heading>
+				{ children }
 				<Link href={ctaLink} passHref={true}>
 					<Button
 						colorScheme="primary"

@@ -2,14 +2,9 @@ import { NetworkConfig } from "@raidguild/quiver";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { IProviderOptions } from "web3modal";
 
+import type { ChainContractDeployments } from "./types";
+
 export const SUPPORTED_NETWORKS: NetworkConfig = {
-	"0x539": {
-		chainId: "0x539",
-		name: "Hardhat",
-		symbol: "ETH",
-		explorer: "http://localhost:1234",
-		rpc: "http://localhost:8545",
-	},
 	"0x89": {
 		chainId: "0x89",
 		name: "Polygon",
@@ -26,12 +21,20 @@ export const SUPPORTED_NETWORKS: NetworkConfig = {
 	},
 };
 
+export const CONTRACTS: ChainContractDeployments = {
+	"0x89": {
+		HeroicNamer: "0xE1352D4c52E5A10140816d876541aA37A739E4EC",
+	},
+	"0x13881": {
+		HeroicNamer: "0x556a50f8E1fABE9c90FD5d5735a2f7AF4ca37283",
+	},
+};
+
 export const PROVIDER_OPTIONS: IProviderOptions = {
 	walletconnect: {
 		package: WalletConnectProvider,
 		options: {
 			rpc: {
-				0x539: SUPPORTED_NETWORKS["0x539"].rpc,
 				0x89: SUPPORTED_NETWORKS["0x89"].rpc,
 				0x13881: SUPPORTED_NETWORKS["0x13881"].rpc,
 			},

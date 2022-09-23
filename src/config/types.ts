@@ -8,6 +8,14 @@ export interface NftDeployments {
 	[chain: string]: NftDeployment;
 }
 
+export interface ContractDeployments {
+	[contract: string]: string;
+}
+
+export interface ChainContractDeployments {
+	[chain: string]: ContractDeployments;
+}
+
 export interface RawNftDeployment {
 	tokenId: number;
 	contract: string;

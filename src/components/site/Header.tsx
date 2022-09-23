@@ -3,7 +3,7 @@ import { Box } from "@chakra-ui/react";
 import { useWallet } from '@raidguild/quiver';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
-import { GiAbstract074, GiCardAceHearts } from 'react-icons/gi';
+import { GiAbstract074, GiBiceps, GiLotus } from 'react-icons/gi';
 import { getGalleries } from 'src/services/content';
 
 import type { Gallery } from '../../config/types';
@@ -35,6 +35,7 @@ export default function Header(): JSX.Element {
 	const logo = useColorModeValue('/images/bee-logo-circle.png', '/images/bee-logo-circle-dark.png');
 	const [galleries, setGalleries] = useState<Gallery[]>([]);
 	const { address } = useWallet();
+	const headerLabelColor = useColorModeValue("secondary.600", "secondary.700");
 
 	useEffect(() => {
 		console.log('Header: useEffect');
@@ -77,6 +78,11 @@ export default function Header(): JSX.Element {
 					</HStack>
 				</Link>
 				<Spacer />
+				<Box color={headerLabelColor}>Art Code: </Box>
+				<HeaderLink href="/processing/" icon={GiLotus}>Digital Lotus</HeaderLink>
+				<Box color={headerLabelColor}>Art Contracts: </Box>
+				<HeaderLink href="/heroic-namer" icon={GiBiceps}>Heroic Namer</HeaderLink>
+				<Box color={headerLabelColor}>Galleries:</Box>
 				{ galleryLinks }
 				<NetworkChanger />
 				<WalletButton />
