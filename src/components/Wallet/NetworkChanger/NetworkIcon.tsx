@@ -2,6 +2,8 @@ import { Box, Icon } from '@chakra-ui/react';
 import React, { useMemo } from 'react';
 
 import EthIcon from './EthIcon';
+import EvmosIcon from './EvmosIcon';
+import GnosisIcon from './GnosisIcon';
 import MaticIcon from './MaticIcon';
 
 interface NetworkIconProps {
@@ -15,6 +17,10 @@ export default function NetworkIcon(props: NetworkIconProps): JSX.Element {
 	const { network, width, height, color } = props;
 	const networkIcon = useMemo(() => {
 		switch (network) {
+			case '0x64':
+				return <GnosisIcon color={color} width={width} height={height} />;
+			case '0x2329':
+				return <EvmosIcon color={color} width={width} height={height} />;
 			case '0x1':
 			case '0x539':
 				return <EthIcon color="#627EEA" width={width + 2} height={height + 2} />;

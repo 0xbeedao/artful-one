@@ -104,7 +104,7 @@ export default function HeroicNamer(props: HeroicNamerProps): JSX.Element {
 					It is an NFT (ERC721) token, so you can trade it, sell it, or give it away.
 				</Text>
 				<Text>
-					I have deployed this to Polygon and Polygon Testnet - so you can give it a try before you commit to the real deal.
+					I have deployed this to Gnosis, Polygon and Polygon Testnet - so you can give it a try before you commit to the real deal.
 					To switch, just change your network, and refresh the page.  It will automatically use the right contract.
 				</Text>
 				<Text></Text>
