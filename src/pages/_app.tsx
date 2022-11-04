@@ -3,11 +3,15 @@ import 'next-pagination/dist/index.css';
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import { WalletProvider } from '@raidguild/quiver';
 import { Toaster, toast } from "react-hot-toast";
+import {
+   QueryClient,
+   QueryClientProvider,
+} from 'react-query';
 
 import { DEFAULT_NETWORK, PROVIDER_OPTIONS, SUPPORTED_NETWORKS } from '../config';
 import theme from '../config/theme';
 
-function MyApp({ Component, pageProps }) {
+function ArtfulApp({ Component, pageProps }) {
 
 	const web3ModalOptions = {
 		cacheProvider: true,
@@ -15,8 +19,16 @@ function MyApp({ Component, pageProps }) {
 		theme: theme.config.initialColorMode,
 	};
 
+	const queryClient = new QueryClient({
+		defaultOptions: {
+			queries: {
+				staleTime: 1000 * 20, // 20 seconds
+			}
+		}
+	});
+
 	return (
-		<>
+		<QueryClientProvider client={queryClient}>
 			<Toaster
 				position="top-center"
 				toastOptions={{ duration: 3000 }}
@@ -38,8 +50,8 @@ function MyApp({ Component, pageProps }) {
 					<Component {...pageProps} />
 				</ChakraProvider>
 			</WalletProvider>
-		</>
+		</QueryClientProvider>
 	);
 }
 
-export default MyApp;
+export default ArtfulApp;

@@ -1,7 +1,7 @@
 import PrimaryTemplate from '@/components/templates/Primary';
-import useWindowSize from '@/hooks/useWindowSize';
 import { Center, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
+import { useWindowSize } from 'usehooks-ts';
 
 export default function ProcessingPage() {
 	const { width, height } = useWindowSize();

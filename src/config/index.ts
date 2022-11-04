@@ -2,7 +2,7 @@ import { NetworkConfig } from "@raidguild/quiver";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { IProviderOptions } from "web3modal";
 
-import type { ChainContractDeployments } from "./types";
+import type { Breakpoints, ChainContractDeployments } from "./types";
 
 export const SUPPORTED_NETWORKS: NetworkConfig = {
 	/* "0x64": {
@@ -61,3 +61,10 @@ export const PROVIDER_OPTIONS: IProviderOptions = {
 };
 
 export const DEFAULT_NETWORK = "0x89"; // Used to switch to if the user is on an unsupported network
+
+export const UI_BREAKPOINTS: Breakpoints = {
+	sm: 720,
+	md: 1024,
+	lg: 1280,
+	xl: 1440,
+};

@@ -1,57 +1,67 @@
-import { HStack, Heading, Icon, Image, Spacer, Text, useColorModeValue } from '@chakra-ui/react';
+import { HStack, Heading, IconButton, Image, Spacer, useColorModeValue, useDisclosure } from '@chakra-ui/react';
 import { Box } from "@chakra-ui/react";
-import { useWallet } from '@raidguild/quiver';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { GiAbstract074, GiBiceps, GiLotus } from 'react-icons/gi';
+import { HiOutlineMenu } from 'react-icons/hi';
+import { useQuery } from 'react-query';
 import { getGalleries } from 'src/services/content';
 
 import type { Gallery } from '../../config/types';
 import NetworkChanger from '../Wallet/NetworkChanger/NetworkChanger';
 import WalletButton from '../Wallet/WalletButton';
+import { HeaderLink } from './HeaderLink';
+import { ModalMenu } from './ModalMenu';
 
-interface HeaderLinkProps {
-	href: string;
-	icon: any;
-	children: React.ReactNode;
-};
-
-export function HeaderLink({ href, children, icon }: HeaderLinkProps): JSX.Element {
-	return (
-		<Box pr="1em" className="headerLink">
-			<Link href={href} passHref={true}>
-				<Box>
-					<Icon as={icon} h="1.5rem" mr="0.5em" verticalAlign="bottom" />
-					{children}
-				</Box>
-			</Link>
-		</Box>
-	);
+interface HeaderProps {
+	breakpoint: string;
 }
 
 // <HeaderLink href="/tarot" icon={GiCardAceHearts}>Tarot Dealer</HeaderLink>
 
-export default function Header(): JSX.Element {
+export default function Header(props: HeaderProps): JSX.Element {
+	const { breakpoint } = props;
 	const logo = useColorModeValue('/images/bee-logo-circle.png', '/images/bee-logo-circle-dark.png');
-	const [galleries, setGalleries] = useState<Gallery[]>([]);
-	const { address } = useWallet();
+
 	const headerLabelColor = useColorModeValue("secondary.600", "secondary.700");
 
-	useEffect(() => {
-		console.log('Header: useEffect');
-		getGalleries().then((galleries) => {
-			console.log('galleries', galleries);
-			setGalleries(galleries);
-		});
-	}, []);
+	const { isOpen, onOpen, onClose } = useDisclosure();
+
+	const galleries = useQuery<Gallery[]>('galleries', getGalleries);
 
 	const galleryLinks = useMemo(() => {
-		const links = galleries.map(
-			(gallery) => <HeaderLink key={gallery.slug} href={`/gallery/${gallery.slug}`} icon={GiAbstract074}>{gallery.name}</HeaderLink>
-		);
-		console.log(`Links: ${links.length}`);
-		return links;
+		return !galleries.isFetched
+			? []
+			: galleries.data.map(
+				(gallery) => <HeaderLink key={gallery.slug} href={`/gallery/${gallery.slug}`} icon={GiAbstract074}>{gallery.name}</HeaderLink>
+			);
 	}, [galleries]);
+
+	const links: JSX.Element[] = useMemo(() => {
+		const links: JSX.Element[] = [];
+		if (breakpoint === 'lg' || breakpoint === 'xl') {
+			links.push(
+				<HeaderLink key="lotus" href="/processing/" icon={GiLotus}>Digital Lotus</HeaderLink>,
+				<HeaderLink key="heroname" href="/heroic-namer" icon={GiBiceps}>Heroic Name</HeaderLink>
+			);
+			if (galleryLinks.length > 0) {
+				links.push(
+					<HeaderLink key="gallery" href="/gallery" icon={GiAbstract074}>Gallery</HeaderLink>,
+				);
+			}
+			links.push(
+				<NetworkChanger key="netchanger" />,
+			  <WalletButton key="wallet" />
+			);
+		} else  {
+			links.push(
+				<WalletButton key="wallet" />,
+			);
+		}
+		links.push(<IconButton key="menu" aria-label="Menu" icon={<HiOutlineMenu />} onClick={onOpen} />);
+		return links;
+	}, [breakpoint, galleryLinks, onOpen]);
+
 
 	return (
 		<Box>
@@ -78,14 +88,12 @@ export default function Header(): JSX.Element {
 					</HStack>
 				</Link>
 				<Spacer />
-				<Box color={headerLabelColor}>Art Code: </Box>
-				<HeaderLink href="/processing/" icon={GiLotus}>Digital Lotus</HeaderLink>
-				<Box color={headerLabelColor}>Art Contracts: </Box>
-				<HeaderLink href="/heroic-namer" icon={GiBiceps}>Heroic Namer</HeaderLink>
-				<Box color={headerLabelColor}>Galleries:</Box>
-				{ galleryLinks }
-				<NetworkChanger />
-				<WalletButton />
+				{links}
 			</HStack>
+			<ModalMenu
+				isOpen={isOpen}
+				onClose={onClose}
+				galleries={galleries.data ?? []}
+			/>
 		</Box >);
 }

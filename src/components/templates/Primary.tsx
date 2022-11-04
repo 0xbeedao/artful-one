@@ -1,3 +1,4 @@
+import useSiteBreakpoint from "@/hooks/useSiteBreakpoint";
 import { Box, Flex } from "@chakra-ui/react";
 import Head from 'next/head';
 
@@ -11,11 +12,12 @@ export interface PrimaryTemplateProps {
 };
 
 export default function PrimaryTemplate({ pageKey, title, children }: PrimaryTemplateProps): JSX.Element {
+	const breakpoint = useSiteBreakpoint();
 	return (
-		<Box id={pageKey}>
+		<Box id={pageKey} className={breakpoint}>
 			<Head><title>Artful One | { title }</title></Head>
 			<Flex minH="100vh" direction="column">
-				<Header />
+				<Header breakpoint={breakpoint} />
 				<Box flex={1}>
 					{children}
 				</Box>

@@ -1,11 +1,10 @@
 import FramedArt, { FramedArtProps } from '@/components/Art/FramedArt';
 import { ArtPiece, Gallery } from '@/config/types';
-import useWindowSize from '@/hooks/useWindowSize';
 import { Box, Center, Heading, SimpleGrid, VStack } from '@chakra-ui/react';
-import { useWallet } from '@raidguild/quiver';
 import Pagination from 'next-pagination';
 import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
+import { useWindowSize } from 'usehooks-ts';
 
 import FramedNft from '../Art/FramedNft';
 import PrimaryTemplate from './Primary';
@@ -20,8 +19,7 @@ interface GalleryTemplateProps {
 }
 
 export default function GalleryTemplate(props: GalleryTemplateProps): JSX.Element {
-	const { pageKey, pageTitle, subtitle, title, gallery, artPieces } = props;
-	const { chainId } = useWallet();
+	const { pageKey, pageTitle, subtitle, title, artPieces } = props;
 	const { query } = useRouter();
 	const windowSize = useWindowSize();
 

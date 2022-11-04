@@ -1,9 +1,7 @@
 import { NftDeployments } from '@/config/types';
 import { Box, Image, Text, useColorModeValue } from '@chakra-ui/react';
-import { useWallet } from '@raidguild/quiver';
 import classnames from 'classnames';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
 import { useMemo } from 'react';
 
 import OpenSeaLinkList from '../atoms/OpenSeaLinkList';

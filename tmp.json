@@ -1,0 +1,50 @@
+{
+	"level": "error",
+	"ts": 1667506626.4520588,
+	"logger": "http.log.access.log1",
+	"msg": "handled request",
+	"request": {
+		"remote_ip": "71.36.102.60",
+		"remote_port": "57712",
+		"proto": "HTTP/1.1",
+		"method": "POST",
+		"host": "cms.artful.one",
+		"uri": "/api/ArtPieces",
+		"headers": {
+			"Authorization": [],
+			"Content-Type": ["application/json"],
+			"User-Agent": ["axios/0.27.2"],
+			"Content-Length": ["7186530"],
+			"Connection": ["close"]
+		},
+		"tls": {
+			"resumed": true,
+			"version": 772,
+			"cipher_suite": 4865,
+			"proto": "",
+			"server_name": "cms.artful.one"
+		}
+	},
+	"user_id": "",
+	"duration": 0.054701274,
+	"size": 103,
+	"status": 413,
+	"resp_headers": {
+		"X-Content-Type-Options": ["nosniff"],
+		"Vary": ["Origin"],
+		"Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+		"X-Download-Options": ["noopen"],
+		"Date": ["Thu, 03 Nov 2022 20:17:06 GMT"],
+		"Server": ["Caddy"],
+		"X-Permitted-Cross-Domain-Policies": ["none"],
+		"Content-Type": ["application/json; charset=utf-8"],
+		"Content-Security-Policy": [
+			"connect-src 'self' https:;img-src 'self' data: blob: https://dl.airtable.com;media-src 'self' data: blob:;default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline'"
+		],
+		"Referrer-Policy": ["no-referrer"],
+		"X-Dns-Prefetch-Control": ["off"],
+		"Expect-Ct": ["max-age=0"],
+		"X-Frame-Options": ["SAMEORIGIN"],
+		"Content-Length": ["103"]
+	}
+}

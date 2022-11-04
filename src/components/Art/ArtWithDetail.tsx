@@ -1,11 +1,8 @@
-import type { ArtPiece } from "@/config/types";
 import {
 	Box,
-	Button,
 	Flex,
 	Heading,
 	Stack,
-	Text,
 	useColorModeValue,
 } from "@chakra-ui/react";
 import Link from "next/link";

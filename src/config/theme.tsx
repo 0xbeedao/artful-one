@@ -115,6 +115,10 @@ const config = {
 					},
 				},
 			},
+			".styledLink a": {
+				color: props.colorMode === 'dark' ? "secondary.500" : "primary.500",
+				textDecoration: "underline",
+			},
 			".mat img": {
 				boxSizing: "border-box",
 				width: "100%; height: auto",
