@@ -67,6 +67,7 @@ export interface ArtPiece {
 	formats: ArtPieceFormats;
 	url: string;
 	slug: string;
+	gallery: string;
 }
 
 type Metadata = {

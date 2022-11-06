@@ -40,9 +40,8 @@ export default function OpenSeaLinkList(props: OpenSeaLinksProps):JSX.Element {
 	const { deployments } = props;
 	const { chainId } = useWallet();
 
-	const allChains = deployments ? Object.keys(deployments) : [];
-	console.log(`OpenSeaLinks: ${chainId} ${JSON.stringify(allChains)}`);
-	const activeChains = isTestNetwork(chainId) ? allChains : allChains.filter(c => !isTestNetwork(c));
+	const allChains = useMemo(() => deployments ? Object.keys(deployments) : [], [deployments]);
+	const activeChains = useMemo(() => isTestNetwork(chainId) ? allChains : allChains.filter(c => !isTestNetwork(c)), [chainId, allChains]);
 	const deployment:NftDeployment = useMemo(() => deployments[chainId] ?? defaultDeployment, [deployments, chainId]);
 
 	if (!activeChains ) {

@@ -40,7 +40,8 @@ export const getGalleries = async () => {
 		});
 };
 
-function toArtPiece(response: any): ArtPiece {
+function toArtPiece(response: any, gallery: string): ArtPiece {
+	console.log("toArtPiece", gallery, response);
 	const art: ArtPiece = {
 		id: response?.id ?? 0,
 		title: response.name,
@@ -51,6 +52,7 @@ function toArtPiece(response: any): ArtPiece {
 		url: response.image.url,
 		deployments: {},
 		slug: response.slug,
+		gallery: gallery ?? response.gallery?.slug ?? "",
 	};
 	if (response.contracts) {
 		response.contracts.forEach((contract) => {
@@ -61,7 +63,7 @@ function toArtPiece(response: any): ArtPiece {
 			};
 		});
 	}
-	console.log("art", art, response);
+	console.log("art", art);
 	return art;
 }
 
@@ -73,7 +75,7 @@ export const getArtForGallery = async (slug: string) => {
 		.filterDeep("gallery.slug", "eq", slug)
 		.get()
 		.then((response) => {
-			return response.data.map(toArtPiece);
+			return response.data.map((r) => toArtPiece(r, slug));
 		});
 };
 
@@ -85,7 +87,7 @@ export const getArt = async (id: string) => {
 		.equalTo("id", id)
 		.get()
 		.then((response) => {
-			return toArtPiece(response.data[0]);
+			return toArtPiece(response.data[0], null);
 		});
 };
 
@@ -97,7 +99,7 @@ export const getArtBySlug = async (slug: string) => {
 		.equalTo("slug", slug)
 		.get()
 		.then((response) => {
-			return toArtPiece(response.data[0]);
+			return toArtPiece(response.data[0], null);
 		});
 };
 

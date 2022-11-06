@@ -1,9 +1,7 @@
 import type { ArtPiece } from "@/config/types";
-import { Box, Center, Flex, Heading, Stack, VStack, useColorModeValue } from "@chakra-ui/react";
+import { Box, Center, Flex, Heading, Link, Stack, VStack, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import React from "react";
 
-import ArtWithDetail from "./ArtWithDetail";
-import FramedArt from "./FramedArt";
 import FramedNft from "./FramedNft";
 
 export interface SimpleArtDetailProps {
@@ -29,7 +27,6 @@ export interface SimpleArtDetailProps {
 
 export function SimpleArtWithDetail(props: SimpleArtDetailProps) {
 	const { art } = props;
-	const textColor = useColorModeValue('primary.700', 'primary.300');
 
 	return (
 		<Center>
@@ -51,10 +48,16 @@ export function SimpleArtWithDetail(props: SimpleArtDetailProps) {
 						slug={art.slug} id={0}
 						deployments={art.deployments}
 						formats={art.formats}
+						gallery={art.gallery}
 					/>
-				<Box textAlign="center">
-					{art.alt}
-				</Box>
+					<Box textAlign="center">
+						{art.alt}
+					</Box>
+					{art.gallery && (
+					<Box textAlign="center">
+						In gallery: <Link href={`/gallery/${art.gallery}` }>{art.gallery}</Link>
+					</Box>
+					)}
 				</Box>
 			</Flex>
 		</Center>

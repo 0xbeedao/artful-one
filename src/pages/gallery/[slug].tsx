@@ -16,7 +16,7 @@ export default function GalleryPage(): JSX.Element {
 	const gallery = useQuery<Gallery>(['gallery', slug], () => getGallery(slug as string));
 
 	const [pageName, pageDescription] = useMemo(() => {
-		if (gallery.isLoading) {
+		if (!gallery.isFetched) {
 			return ["Gallery - Loading", "Loading..."];
 		}
 		return [`Gallery - ${gallery.data.name}`, gallery.data.description];
