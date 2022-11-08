@@ -3,16 +3,12 @@ import {
 	Box,
 	Center,
 	Flex,
-	Image,
-	List,
-	ListItem,
 	Modal,
 	ModalBody,
 	ModalCloseButton,
 	ModalContent,
 	ModalHeader,
 	ModalOverlay,
-	Text,
 	VStack,
 	useColorModeValue,
 } from '@chakra-ui/react';
@@ -48,7 +44,6 @@ export function ModalMenu({
 		const links = galleries.map(
 			(gallery) => <HeaderLink key={gallery.slug} href={`/gallery/${gallery.slug}`} icon={GiAbstract074}>{gallery.name}</HeaderLink>
 		);
-		console.log(`Links: ${links.length}`);
 		return links;
 	}, [galleries]);
 

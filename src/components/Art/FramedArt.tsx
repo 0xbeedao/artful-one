@@ -1,9 +1,11 @@
+import { baseUrl } from '@/config/cms';
 import { NftDeployments } from '@/config/types';
 import { Box, Image, Text, useColorModeValue, useDisclosure } from '@chakra-ui/react';
 import classnames from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCallback, useMemo } from 'react';
+import { encodeMap } from 'src/util/smashmap';
 
 import OpenSeaLinkList from '../atoms/OpenSeaLinkList';
 import ModalFullscreenImage from './ModalFullscreenImage';
@@ -30,17 +32,27 @@ export default function FramedArt(props: FramedArtProps):JSX.Element {
 		onOpen();
 	}, [onOpen]);
 
-	const image = useMemo(() => {
+	const deeplink = useMemo(() => {
+		const info = encodeMap({
+			t: title,
+			d: alt || `Artful preview of ${title}`,
+			i: src.slice(baseUrl.length)
+		});
 		const artUrl = `/art/${slug}`;
-		if (slug && !router.asPath.endsWith(slug)) {
+		const deeplink = `${artUrl}/${info}`;
+		return deeplink;
+	}, [alt, src, slug, title]);
+
+	const image = useMemo(() => {
+		if (slug && !router.asPath.endsWith(slug) && router.asPath.indexOf(`/${slug}/`) === -1) {
 			return (
-				<Link href={artUrl} passHref={true}>
+				<Link href={deeplink} passHref={true}>
 					<Image src={src} alt={alt || title} />
 				</Link>
 			);
 		}
 		return <Image src={src} alt={alt || title} onClick={handleOpen} />;
-	}, [slug, router.asPath, src, alt, title, handleOpen]);
+	}, [slug, router.asPath, src, alt, title, handleOpen, deeplink]);
 
 	return (
 		<>

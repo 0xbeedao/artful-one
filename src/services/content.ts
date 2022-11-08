@@ -5,11 +5,6 @@ import type {
 	NftDeployments,
 	RawNftDeployment,
 } from "@/config/types";
-import {
-	StrapiClient,
-	StrapiPopulatedResponse,
-	StrapiUnifiedResponse,
-} from "@kmariappan/strapi-client-js";
 
 import { strapi } from "../config/cms";
 
@@ -41,7 +36,6 @@ export const getGalleries = async () => {
 };
 
 function toArtPiece(response: any, gallery: string): ArtPiece {
-	console.log("toArtPiece", gallery, response);
 	const art: ArtPiece = {
 		id: response?.id ?? 0,
 		title: response.name,
@@ -63,7 +57,6 @@ function toArtPiece(response: any, gallery: string): ArtPiece {
 			};
 		});
 	}
-	console.log("art", art);
 	return art;
 }
 

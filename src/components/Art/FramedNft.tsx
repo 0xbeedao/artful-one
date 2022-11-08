@@ -15,9 +15,9 @@ export default function FramedNft(props: ArtPiece): JSX.Element {
 		} else if (url) {
 			source = `${baseUrl}${url}`;
 		}
-		console.log(`FramedNft: ${id}, ${source}}`);
+		// console.log(`FramedNft: ${id}, ${source}}`);
 		return source;
-	}, [formats, id, url]);
+	}, [formats, url]);
 
 	return (
 		<FramedArt
