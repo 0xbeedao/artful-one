@@ -9,6 +9,7 @@ export default function Document() {
 				<link rel="preconnect" href="https://fonts.gstatic.com" />
 				<link href="https://fonts.googleapis.com/css2?family=Esteban&display=swap" rel="stylesheet" />
 				<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap" rel="stylesheet" />
+				<meta name="twitter:site" content="@CryptoArchon"></meta>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<body>
@@ -16,5 +17,5 @@ export default function Document() {
 				<NextScript />
 			</body>
 		</Html>
-	)
+	);
 }
