@@ -27,9 +27,9 @@ export default function ArtPage(): JSX.Element {
 		<PrimaryTemplate pageKey={slug} title={art.data.title}>
 			<Head>
 				<meta name="twitter:card" content="summary_large_image"></meta>
-				<meta property="og:title" content={art.data.title}></meta>
-				<meta property="og:description" content={art.data.alt}></meta>
-				<meta property="og:image" content={`${baseUrl}${art.data.url}`}></meta>
+				<meta name="twitter:title" content={art.data.title}></meta>
+				<meta name="twitter:description" content={art.data.alt}></meta>
+				<meta name="twitter:image" content={`${baseUrl}${art.data.url}`}></meta>
 			</Head>
 			{art.isFetched && <SimpleArtWithDetail art={art.data} />}
 		</PrimaryTemplate>

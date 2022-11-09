@@ -8,7 +8,7 @@ import { getArtForGallery, getDeployments, getGallery, mergeArtPiecesWithDeploym
 
 export default function GalleryPage(): JSX.Element {
 
-	const router = useRouter();
+const router = useRouter();
 	const { slug } = router.query;
 
 	const artPieces = useQuery<ArtPiece[]>(['art', slug], () => getArtForGallery(slug as string));

@@ -64,7 +64,7 @@ export interface ArtPiece {
 	artist?: string;
 	media?: string;
 	deployments: NftDeployments;
-	formats: ArtPieceFormats;
+	formats?: ArtPieceFormats;
 	url: string;
 	slug: string;
 	gallery: string;

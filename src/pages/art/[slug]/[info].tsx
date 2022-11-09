@@ -20,15 +20,31 @@ export default function ArtPage(): JSX.Element {
 	const data = decodeMap(info as string);
 	const { t: title, d: description, i: image } = data;
 
+	const artSection: ArtPiece = useMemo(() => {
+		if (art.isFetched) {
+			return art.data;
+		}
+		// return an art piece based on the rehydrated data
+		return {
+			id: -1,
+			deployments: {},
+			slug,
+			gallery: '',
+			title,
+			alt: description,
+			url: image,
+		};
+	}, [art.data, art.isFetched, description, image, slug, title]);
+
 	return (
 		<PrimaryTemplate pageKey={slug} title={title}>
 			<Head>
 				<meta name="twitter:card" content="summary_large_image"></meta>
-				<meta property="og:title" content={title}></meta>
-				<meta property="og:description" content={description}></meta>
-				<meta property="og:image" content={`${baseUrl}${image}`}></meta>
+				<meta name="twitter:title" content={title}></meta>
+				<meta name="twitter:description" content={description}></meta>
+				<meta name="twitter:image" content={`${baseUrl}${image}`}></meta>
 			</Head>
-			{art.isFetched && <SimpleArtWithDetail art={art.data} />}
+			<SimpleArtWithDetail art={artSection} />
 		</PrimaryTemplate>
 	);
 }
