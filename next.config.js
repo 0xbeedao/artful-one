@@ -10,7 +10,7 @@ module.exports = {
 		return [
 			{
 				// matching all processing js files
-				source: "/lib/processing/*",
+				source: "/lib/processing",
 				headers: [
 					{
 						key: "Access-Control-Allow-Origin",
